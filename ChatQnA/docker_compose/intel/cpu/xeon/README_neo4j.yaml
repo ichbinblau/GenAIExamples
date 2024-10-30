@@ -1,0 +1,4 @@
+# Local GraphRAG Setup on Intel Xeon
+The guide is for setting up a local graph RAG based ChatQnA.
+Local Graph RAG (Retrieval-Augmented Generation) is an approach that combines the strengths of knowledge graphs and large language models (LLMs) to enhance information retrieval and generation. 
+This method is particularly useful for answering complex queries over large text corpora by creating a graph-based index of the text.
