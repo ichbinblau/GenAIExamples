@@ -53,6 +53,12 @@ services:
       dockerfile: comps/embeddings/tei/langchain/Dockerfile
     extends: chatqna
     image: ${REGISTRY:-opea}/embedding-tei:${TAG:-latest}
+  retriever-neo4j:
+    build:
+      context: GenAIComps
+      dockerfile: comps/retrievers/neo4j/langchain/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/retriever-neo4j:${TAG:-latest}
   retriever-redis:
     build:
       context: GenAIComps
@@ -107,6 +113,12 @@ services:
       dockerfile: comps/llms/text-generation/vllm/ray/dependency/Dockerfile
     extends: chatqna
     image: ${REGISTRY:-opea}/llm-vllm-ray-hpu:${TAG:-latest}
+  dataprep-neo4j:
+    build:
+      context: GenAIComps
+      dockerfile: comps/dataprep/neo4j/langchain/Dockerfile
+    extends: chatqna
+    image: ${REGISTRY:-opea}/dataprep-neo4j:${TAG:-latest}
   dataprep-redis:
     build:
       context: GenAIComps
