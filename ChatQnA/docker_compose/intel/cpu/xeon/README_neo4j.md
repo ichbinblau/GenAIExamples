@@ -45,9 +45,9 @@ Our current evaluation runs `Intel/neural-chat-7b-v3-3` on Intel Xeon. Plz also 
    ```
    Consume the graphrag service.
    ```bash
-   curl -x "" http://localhost:8888/v1/graphrag \
-    -H "Content-Type: application/json" \
-    -d "{\"model\": \"Intel neural chat\",\"messages\": [{\"role\": \"user\",\"content\": \"Who is Marie Curie and what are her scientific achievements?\"}]}"
+   curl -x "" http://localhost:8888/v1/chatqna \
+   -H "Content-Type: application/json" \
+   -d "{\"messages\": [{\"role\": \"user\",\"content\": \"Who is Marie Curie and what are her scientific achievements?\"}]}"
    ```
 ## Tear down the services
 ```bash
