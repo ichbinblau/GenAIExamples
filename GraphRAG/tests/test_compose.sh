@@ -11,7 +11,6 @@ export REGISTRY=${IMAGE_REPO}
 export TAG=${IMAGE_TAG}
 
 WORKPATH=$(dirname "$PWD")
-WORKPATH=/home/rbrugaro/GenAIExamples/GraphRAG
 LOG_PATH="$WORKPATH/tests"
 ip_address=$(hostname -I | awk '{print $1}')
 

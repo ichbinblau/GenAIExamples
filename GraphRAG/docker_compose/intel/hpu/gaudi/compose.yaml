@@ -29,7 +29,7 @@ services:
     ports:
       - "6006:80"
     volumes:
-      - "./data:/data"
+      - "/scratch-1/opea-models:/data"
     shm_size: 1g
     environment:
       no_proxy: ${no_proxy}
@@ -45,7 +45,7 @@ services:
     ports:
       - "6005:80"
     volumes:
-      - "./data:/data"
+      - "/scratch-1/opea-models:/data"
     environment:
       no_proxy: ${no_proxy}
       NO_PROXY: ${no_proxy}
@@ -56,15 +56,21 @@ services:
       HF_HUB_ENABLE_HF_TRANSFER: 0
       HABANA_VISIBLE_DEVICES: all
       OMPI_MCA_btl_vader_single_copy_mechanism: none
-      ENABLE_HPU_GRAPH: true
-      LIMIT_HPU_GRAPH: true
-      USE_FLASH_ATTENTION: true
-      FLASH_ATTENTION_RECOMPUTE: true
+      ENABLE_HPU_GRAPH: 1
+      LIMIT_HPU_GRAPH: 1
+      USE_FLASH_ATTENTION: 1
+      FLASH_ATTENTION_RECOMPUTE: 1
+      TEXT_GENERATION_SERVER_IGNORE_EOS_TOKEN: 1
+      PT_HPU_ENABLE_LAZY_COLLECTIVES: 1
+      MAX_TOTAL_TOKENS: 4096
+      BATCH_BUCKET_SIZE: 256
+      PREFILL_BATCH_BUCKET_SIZE: 4
+      PAD_SEQUENCE_TO_MULTIPLE_OF: 64
     runtime: habana
     cap_add:
       - SYS_NICE
     ipc: host
-    command: --model-id ${LLM_MODEL_ID} --max-input-length 2048 --max-total-tokens 4096
+    command: --model-id ${LLM_MODEL_ID} --max-input-length 3608 --max-total-tokens 5120 --sharded true --num-shard=8 --max-batch-prefill-tokens 4096 --max-batch-total-tokens 524288 --max-waiting-tokens 7 --waiting-served-ratio 1.2 --max-concurrent-requests 512
   dataprep-neo4j-llamaindex:
     image: opea/dataprep-neo4j-llamaindex:latest
     container_name: dataprep-neo4j-server
