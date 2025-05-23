@@ -5,7 +5,7 @@
 export TAG="1.2"
 export LOGFLAG=true
 export no_proxy=chatqna-ui-server,chatqna-backend-server,dataprep-redis-service,tei-embedding-service,retriever,tei-reranking-service,tgi-service,vllm-service,$no_proxy
-export host_ip="10.239.241.56"
+#export host_ip="10.239.241.56"
 export EMBEDDING_MODEL_ID="BAAI/bge-base-en-v1.5"
 export RERANK_MODEL_ID="BAAI/bge-reranker-base"
 export LLM_MODEL_ID="deepseek-ai/DeepSeek-R1-Distill-Qwen-7B"
